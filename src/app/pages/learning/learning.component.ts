@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 // import * from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-pages-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-pages-learning',
+  templateUrl: './learning.component.html',
+  styleUrls: ['./learning.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class LearningComponent implements OnInit {
   @Input() testTitle: string = 'Hello';
 
   number1: number = 12;

@@ -1,0 +1,12 @@
+<div class="learning">
+  <button nz-button nzType="primary" (click)="onClickTest()">
+    Test {{ testTitle }}
+  </button>
+  <input
+    #number1
+    type="number"
+    [value]="number1"
+    (input)="onChange('number1', number1.value)"
+  />
+  <button mat-raised-button color="accent">Accent</button>
+</div>
