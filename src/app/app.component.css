@@ -1,0 +1,5 @@
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+main {
+  height: 100vh;
+}
