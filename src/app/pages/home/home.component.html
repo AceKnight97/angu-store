@@ -5,7 +5,15 @@
   <!-- <div class="home-body" *ngFor="let i of list">Test {{ i }}</div> -->
   <div class="home-body">
     <div class="home-body-m">
-      <app-pages-learning></app-pages-learning>
+      <!-- <app-pages-learning></app-pages-learning> -->
+      <!-- <app-food-table></app-food-table> -->
+      <!-- <input
+        #emailP
+        type="text"
+        [value]="email"
+        (input)="onEmailChange(emailP.value)"
+      /> -->
+      <app-input-ct [value]="email" title="Email"></app-input-ct>
     </div>
   </div>
 

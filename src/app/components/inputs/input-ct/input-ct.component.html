@@ -1,0 +1,9 @@
+<div class="input-ct">
+  <app-input-title [title]="title"></app-input-title>
+  <input
+    #inputPointer
+    type="text"
+    [value]="value"
+    (input)="onChange(inputPointer.value)"
+  />
+</div>
