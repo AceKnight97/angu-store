@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatButtonModule } from '@angular/material/button';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,6 +13,12 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule, NzButtonModule, MatButtonModule, MatIconModule],
+  exports: [
+    RouterModule,
+    NzButtonModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+  ],
 })
 export class AppRoutingModule {}

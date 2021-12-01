@@ -7,9 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  @Input() testTitle: string = 'Hello';
-
-  email: string = '';
+  public email: string = '';
+  username: string = '';
   constructor() {}
 
   ngOnInit(): void {}
@@ -17,8 +16,11 @@ export class HomeComponent implements OnInit {
   onEmailChange(value: string): void {
     this.email = value;
   }
+  onUsernameChange(value: string): void {
+    this.username = value;
+  }
 
   onClickTest(): void {
-    console.log('Test');
+    console.log({ email: this.email, username: this.username });
   }
 }

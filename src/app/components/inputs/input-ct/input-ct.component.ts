@@ -8,12 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InputCTComponent implements OnInit {
   @Input() value: any = '';
   @Input('title') title: string = '';
+  @Input('placeholder') placeholder: string = '';
+  @Input('onChange') onChangeVal: (value: any) => void = () => {};
 
   constructor() {}
 
   ngOnInit(): void {}
 
   onChange(value: string): void {
-    this.value = value;
+    this.onChangeVal(value);
   }
 }

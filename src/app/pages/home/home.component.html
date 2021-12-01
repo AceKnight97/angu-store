@@ -2,32 +2,50 @@
   <div class="home-header">
     <div class="home-header-title">Welcome to Angu Store!</div>
   </div>
-  <!-- <div class="home-body" *ngFor="let i of list">Test {{ i }}</div> -->
   <div class="home-body">
     <div class="home-body-m">
-      <!-- <app-pages-learning></app-pages-learning> -->
-      <!-- <app-food-table></app-food-table> -->
-      <!-- <input
-        #emailP
-        type="text"
+      <app-input-ct
+        title="Email"
         [value]="email"
-        (input)="onEmailChange(emailP.value)"
-      /> -->
-      <app-input-ct [value]="email" title="Email"></app-input-ct>
+        placeholder="Enter your email"
+        [onChange]="onEmailChange"
+      ></app-input-ct>
+      <app-input-ct
+        title="Username"
+        [value]="username"
+        placeholder="Enter your username"
+        [onChange]="onUsernameChange"
+      ></app-input-ct>
+      <button mat-raised-button color="accent" (click)="onClickTest()">
+        Accent
+      </button>
     </div>
   </div>
 
   <div class="home-footer">
     <div class="home-footer-email">Email: tttriet1997@gmail.com</div>
+    <!-- <div class="divider-v "></div> -->
+    <div class="home-footer-divider"></div>
     <a
       class="home-footer-email"
       target="_blank"
       href="https://www.facebook.com/profile.php?id=100015087697713"
       >Facebook</a
     >
+    <div class="home-footer-divider"></div>
     <div class="home-footer-email">(+84) 819 541 897</div>
+    <div class="home-footer-divider"></div>
     <div class="home-footer-address">
       329 Le Van Luong, W. Tan Quy, D.7, HCM city
     </div>
   </div>
 </div>
+<!-- <div class="home-body" *ngFor="let i of list">Test {{ i }}</div> -->
+<!-- <app-pages-learning></app-pages-learning> -->
+<!-- <app-food-table></app-food-table> -->
+<!-- <input
+        #emailP
+        type="text"
+        [value]="email"
+        (input)="onEmailChange(emailP.value)"
+      /> -->

@@ -1,9 +1,13 @@
 <div class="input-ct">
-  <app-input-title [title]="title"></app-input-title>
-  <input
-    #inputPointer
-    type="text"
-    [value]="value"
-    (input)="onChange(inputPointer.value)"
-  />
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>{{ title }}</mat-label>
+    <input
+      matInput
+      #inputPointer
+      type="text"
+      [value]="value"
+      (input)="onChange(inputPointer.value)"
+      [placeholder]="placeholder"
+    />
+  </mat-form-field>
 </div>
