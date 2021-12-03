@@ -10,7 +10,7 @@ export class InputCTComponent implements OnInit {
   @Input('title') title: string = '';
   @Input('placeholder') placeholder: string = '';
   @Input('onChange') onChangeVal: (value: any) => void = () => {};
-
+  @Input('ngModel') ngModel: any;
   constructor() {}
 
   ngOnInit(): void {}

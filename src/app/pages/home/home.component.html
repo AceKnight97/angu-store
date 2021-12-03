@@ -4,18 +4,20 @@
   </div>
   <div class="home-body">
     <div class="home-body-m">
+      <input matInput #inputPointer type="text" [(ngModel)]="homeModel.email" />
       <app-input-ct
         title="Email"
-        [value]="email"
+        [value]="homeModel.email"
         placeholder="Enter your email"
         [onChange]="onEmailChange"
+        [ngModel]="homeModel.email"
       ></app-input-ct>
-      <app-input-ct
+      <!--   <app-input-ct
         title="Username"
         [value]="username"
         placeholder="Enter your username"
         [onChange]="onUsernameChange"
-      ></app-input-ct>
+      ></app-input-ct> -->
       <button mat-raised-button color="accent" (click)="onClickTest()">
         Accent
       </button>

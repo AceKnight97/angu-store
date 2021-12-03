@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Home } from './home';
 // import * from 'ng-zorro-antd';
 
 @Component({
@@ -7,20 +8,23 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public email: string = '';
-  username: string = '';
   constructor() {}
+
+  homeModel = new Home('', '');
 
   ngOnInit(): void {}
 
   onEmailChange(value: string): void {
-    this.email = value;
+    this.homeModel.setEmail(value);
+    // console.log({ email: this.homeModel.email });
   }
+
   onUsernameChange(value: string): void {
-    this.username = value;
+    // this.username = value;
+    // console.log({ username: this.username });
   }
 
   onClickTest(): void {
-    console.log({ email: this.email, username: this.username });
+    console.log({ email: this.homeModel.email });
   }
 }

@@ -8,6 +8,7 @@ import { LearningComponent } from './pages/learning/learning.component';
 import { FoodTableComponent } from './components/tables/food-table/food-table.component';
 import { InputCTComponent } from './components/inputs/input-ct/input-ct.component';
 import { InputTitleComponent } from './components/inputs/input-title/input-title.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { InputTitleComponent } from './components/inputs/input-title/input-title
     InputCTComponent,
     InputTitleComponent,
   ],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
