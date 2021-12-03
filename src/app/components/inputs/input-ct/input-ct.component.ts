@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-input-ct',
@@ -9,13 +9,14 @@ export class InputCTComponent implements OnInit {
   @Input() value: any = '';
   @Input('title') title: string = '';
   @Input('placeholder') placeholder: string = '';
-  @Input('onChange') onChangeVal: (value: any) => void = () => {};
   @Input('ngModel') ngModel: any;
+  @Output() ngModelChange = new EventEmitter<any>();
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  onChange(value: string): void {
-    this.onChangeVal(value);
+  onChange(): void {
+    this.ngModelChange.emit(this.ngModel);
   }
 }

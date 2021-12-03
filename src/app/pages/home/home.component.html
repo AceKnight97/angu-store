@@ -7,10 +7,8 @@
       <input matInput #inputPointer type="text" [(ngModel)]="homeModel.email" />
       <app-input-ct
         title="Email"
-        [value]="homeModel.email"
         placeholder="Enter your email"
-        [onChange]="onEmailChange"
-        [ngModel]="homeModel.email"
+        [(ngModel)]="homeModel.email"
       ></app-input-ct>
       <!--   <app-input-ct
         title="Username"
