@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng g c components/inputs/inputTitle --skip-tests"
+    "test": "ng g c components/ui/programmingLanguage --skip-tests"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TestComponent } from './services/gets/test/test.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angu-store';
+  constructor(private test: TestComponent) {
+    // this.test.getData().subscribe((a) => {
+    //   console.log({ a });
+    // });
+  }
 }

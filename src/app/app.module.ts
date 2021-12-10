@@ -9,6 +9,12 @@ import { FoodTableComponent } from './components/tables/food-table/food-table.co
 import { InputCTComponent } from './components/inputs/input-ct/input-ct.component';
 import { InputTitleComponent } from './components/inputs/input-title/input-title.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { TestComponent } from './services/gets/test/test.component';
+import { UserComponent } from './services/gets/user/user.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProgrammingLanguageComponent } from './components/ui/programming-language/programming-language.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +24,16 @@ import { FormsModule } from '@angular/forms';
     FoodTableComponent,
     InputCTComponent,
     InputTitleComponent,
+    UserComponent,
+    ProgrammingLanguageComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
