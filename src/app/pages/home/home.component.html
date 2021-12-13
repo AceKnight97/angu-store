@@ -85,8 +85,25 @@
                   <app-programming-language
                     [index]="idx"
                     [programingLanguage]="proLanguage"
-                    [(onClickAddPL)]="onClickAddPL"
+                    (onClickAddPL)="onClickAddPL($event)"
+                    (onClickRemovePL)="onClickRemovePL($event)"
                   ></app-programming-language>
+                </div>
+              </div>
+            </div>
+            <div class="home-body-pl">
+              <label class="b">Other skill</label>
+              <div formArrayName="otherSkills">
+                <div
+                  *ngFor="let otherSkill of otherSkills.controls; index as idx"
+                  class="form-group"
+                >
+                  <div index="idx" class="form-group">
+                    <input
+                      formControlName="otherSkill"
+                      placeholder="Your skills"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

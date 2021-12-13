@@ -13,20 +13,18 @@ export class ProgrammingLanguageComponent implements OnInit {
     level: new FormControl(''),
   });
   @Input() index: number = 0;
-  @Input() onClickAddPL: any = () => {};
-  @Output() onClickAddPLChange = new EventEmitter<any>();
+  @Output() onClickAddPL = new EventEmitter<any>();
+  @Output() onClickRemovePL = new EventEmitter<any>();
 
   constructor() {}
-  ngOnChanges(): void {
-    // console.log('object: ', this.onClickAddPL);
-    this.onClickAddPLChange.emit(this.onClickAddPL);
-  }
+  ngOnChanges(): void {}
 
   ngOnInit(): void {}
   onFormSubmit(): void {}
   onClickAdd(): void {
-    // console.log({ index: this.index, asdas: this.onClickAddPL });
-    this.onClickAddPL(this.index);
+    this.onClickAddPL.emit(this.index);
   }
-  onClickRemove(): void {}
+  onClickRemove(): void {
+    this.onClickRemovePL.emit(this.index);
+  }
 }

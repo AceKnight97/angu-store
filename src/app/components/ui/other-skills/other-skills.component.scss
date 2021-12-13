@@ -1,0 +1,6 @@
+.other-skills {
+  display: flex;
+  &-input {
+    width: calc(100% - 56px);
+  }
+}
