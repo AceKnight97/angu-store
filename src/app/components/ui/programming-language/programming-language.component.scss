@@ -1,0 +1,32 @@
+@import "../../../styles/index.scss";
+
+.programming-language {
+  position: relative;
+  margin-top: 1.5rem;
+  &-tech-com {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-tech {
+    width: 30%;
+  }
+  &-com {
+    width: 70%;
+    padding-left: 2rem;
+  }
+  &-level {
+  }
+  &-btns {
+    position: absolute;
+    top: -1rem;
+    right: 0;
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid #dedede;
+    &-add,
+    &-delete {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

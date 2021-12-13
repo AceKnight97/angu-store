@@ -1,1 +1,34 @@
-<p>programming-language works!</p>
+<div class="programming-language">
+  <form [formGroup]="programingLanguage" (ngSubmit)="onFormSubmit()">
+    <div class="programming-language-tech-com">
+      <div class="form-group programming-language-tech">
+        <label>Technical Skillset</label>
+        <input formControlName="technicalSkillset" />
+      </div>
+      <div class="form-group programming-language-com">
+        <label>Competence</label>
+        <input formControlName="competence" />
+      </div>
+    </div>
+
+    <div class="form-group programming-language-level">
+      <label>Level</label>
+      <input formControlName="level" />
+    </div>
+
+    <div class="programming-language-btns">
+      <button
+        class="nor-btn programming-language-btns-add"
+        (click)="onClickAdd()"
+      >
+        +
+      </button>
+      <button
+        class="nor-btn programming-language-btns-delete"
+        (click)="onClickRemove()"
+      >
+        X
+      </button>
+    </div>
+  </form>
+</div>

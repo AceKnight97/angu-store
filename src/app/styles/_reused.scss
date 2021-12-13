@@ -5,3 +5,29 @@
     background-color: #ededed;
   }
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.b {
+  font-weight: bold;
+  font-size: 18px;
+}
+.fr-sb {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+.nor-btn {
+  padding: 0;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -74,18 +74,6 @@
           <div class="home-body-right">
             <div class="home-body-pl">
               <label class="b">Personal Info</label>
-              <!-- <div formArrayName="programmingLanguages">
-                <div
-                  *ngFor="
-                    let proLanguage of programmingLanguages.controls;
-                    index as idx
-                  "
-                >
-                  <input [formControlName]="idx" placeholder="Enter a Name" />
-                  <app-programming-language></app-programming-language>
-                </div>
-              </div> -->
-
               <div formArrayName="programmingLanguages">
                 <div
                   *ngFor="
@@ -94,7 +82,11 @@
                   "
                   class="form-group"
                 >
-                  <app-programming-language></app-programming-language>
+                  <app-programming-language
+                    [index]="idx"
+                    [programingLanguage]="proLanguage"
+                    [(onClickAddPL)]="onClickAddPL"
+                  ></app-programming-language>
                 </div>
               </div>
             </div>
@@ -102,7 +94,12 @@
         </div>
 
         <div class="home-body-btns">
-          <button mat-raised-button color="accent" class="home-body-btns-save">
+          <button
+            mat-raised-button
+            color="accent"
+            class="home-body-btns-save"
+            type="submit"
+          >
             Save
           </button>
           <button mat-raised-button color="accent" class="home-body-btns-back">
