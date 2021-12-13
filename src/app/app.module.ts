@@ -16,6 +16,7 @@ import { UserComponent } from './services/gets/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProgrammingLanguageComponent } from './components/ui/programming-language/programming-language.component';
 import { OtherSkillsComponent } from './components/ui/other-skills/other-skills.component';
+import { WorkingExperienceComponent } from './components/ui/working-experience/working-experience.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { OtherSkillsComponent } from './components/ui/other-skills/other-skills.
     UserComponent,
     ProgrammingLanguageComponent,
     OtherSkillsComponent,
+    WorkingExperienceComponent,
   ],
   imports: [
     BrowserModule,

@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       dob: '',
       linkedin: '',
       careerObjective: '',
-      // PERSONAL INFO
+      // ARRAY INFO
       programmingLanguages: this.fb.array([this.proLanguage]),
       otherSkills: this.fb.array(['']),
     });
@@ -71,5 +71,20 @@ export class HomeComponent implements OnInit {
     }
     console.log({ index });
     this.programmingLanguages.removeAt(index);
+  }
+  onClickAddOS(index: number = 0): void {
+    if (!this.otherSkills.at(index)?.value) {
+      console.log('Empty: ', { value: this.otherSkills.at(index)?.value });
+      return;
+    }
+    this.otherSkills.insert(index + 1, new FormControl(''));
+  }
+  onClickRemoveOS(index: number = 0): void {
+    if (index == 0) {
+      this.otherSkills.at(index).reset();
+      return;
+    }
+    console.log({ index });
+    this.otherSkills.removeAt(index);
   }
 }

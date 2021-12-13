@@ -98,12 +98,12 @@
                   *ngFor="let otherSkill of otherSkills.controls; index as idx"
                   class="form-group"
                 >
-                  <div index="idx" class="form-group">
-                    <input
-                      formControlName="otherSkill"
-                      placeholder="Your skills"
-                    />
-                  </div>
+                  <app-other-skills
+                    [index]="idx"
+                    [otherSkill]="otherSkill"
+                    (onClickAddOS)="onClickAddOS($event)"
+                    (onClickRemoveOS)="onClickRemoveOS($event)"
+                  ></app-other-skills>
                 </div>
               </div>
             </div>

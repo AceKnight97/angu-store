@@ -1,6 +1,23 @@
+@import "../../../styles/index.scss";
+
 .other-skills {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   &-input {
-    width: calc(100% - 56px);
+    // width: calc(100% - 56px);
+    flex: 1;
+  }
+  &-btns {
+    display: flex;
+    border-radius: 4px;
+    border: 1px solid #dedede;
+    margin-left: 1.5rem;
+    &-add,
+    &-delete {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }

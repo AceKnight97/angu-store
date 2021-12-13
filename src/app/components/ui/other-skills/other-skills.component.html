@@ -1,7 +1,15 @@
 <div index="idx" class="form-group other-skills">
   <input
     class="other-skills-input"
-    formControlName="otherSkill"
+    [formControl]="otherSkill"
     placeholder="Your skills"
   />
+  <div class="other-skills-btns">
+    <button class="nor-btn other-skills-btns-add" (click)="onClickAdd()">
+      +
+    </button>
+    <button class="nor-btn other-skills-btns-delete" (click)="onClickRemove()">
+      X
+    </button>
+  </div>
 </div>
