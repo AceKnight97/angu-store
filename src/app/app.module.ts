@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProgrammingLanguageComponent } from './components/ui/programming-language/programming-language.component';
 import { OtherSkillsComponent } from './components/ui/other-skills/other-skills.component';
 import { WorkingExperienceComponent } from './components/ui/working-experience/working-experience.component';
+import { EducationComponent } from './components/ui/education/education.component';
+import { CertificateComponent } from './components/ui/certificate/certificate.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { WorkingExperienceComponent } from './components/ui/working-experience/w
     ProgrammingLanguageComponent,
     OtherSkillsComponent,
     WorkingExperienceComponent,
+    EducationComponent,
+    CertificateComponent,
   ],
   imports: [
     BrowserModule,

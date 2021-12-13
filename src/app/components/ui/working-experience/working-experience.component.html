@@ -1,1 +1,42 @@
-<p>working-experience works!</p>
+<form
+  [formGroup]="workExp"
+  (ngSubmit)="onFormSubmit()"
+  class="working-experience"
+>
+  <div class="working-experience-left">
+    <div class="form-group">
+      <label>From date</label>
+      <input formControlName="fromDate" />
+    </div>
+    <div class="form-group">
+      <label>To date</label>
+      <input formControlName="toDate" />
+    </div>
+  </div>
+  <div class="working-experience-right">
+    <div class="form-group">
+      <label>Company name</label>
+      <input formControlName="companyName" />
+    </div>
+    <div class="form-group">
+      <label>Job title</label>
+      <input formControlName="jobTitle" />
+    </div>
+    <div class="form-group">
+      <label>Job description</label>
+      <input formControlName="jobDescription" />
+    </div>
+  </div>
+
+  <div class="working-experience-btns">
+    <button class="nor-btn working-experience-btns-add" (click)="onClickAdd()">
+      +
+    </button>
+    <button
+      class="nor-btn working-experience-btns-delete"
+      (click)="onClickRemove()"
+    >
+      X
+    </button>
+  </div>
+</form>

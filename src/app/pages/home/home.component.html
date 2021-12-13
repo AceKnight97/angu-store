@@ -70,6 +70,23 @@
                 <input formControlName="careerObjective" />
               </div>
             </div>
+
+            <div class="home-body-edu">
+              <label class="b">Working experience</label>
+              <div formArrayName="educations">
+                <div
+                  *ngFor="let edu of educations.controls; index as idx"
+                  class="form-group"
+                >
+                  <app-education
+                    [index]="idx"
+                    [edu]="edu"
+                    (onClickAddEdu)="onClickAddEdu($event)"
+                    (onClickRemoveEdu)="onClickRemoveEdu($event)"
+                  ></app-education>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="home-body-right">
             <div class="home-body-pl">
@@ -104,6 +121,41 @@
                     (onClickAddOS)="onClickAddOS($event)"
                     (onClickRemoveOS)="onClickRemoveOS($event)"
                   ></app-other-skills>
+                </div>
+              </div>
+            </div>
+            <div class="home-body-pl">
+              <label class="b">Other skill</label>
+              <div formArrayName="otherSkills">
+                <div
+                  *ngFor="let otherSkill of otherSkills.controls; index as idx"
+                  class="form-group"
+                >
+                  <app-other-skills
+                    [index]="idx"
+                    [otherSkill]="otherSkill"
+                    (onClickAddOS)="onClickAddOS($event)"
+                    (onClickRemoveOS)="onClickRemoveOS($event)"
+                  ></app-other-skills>
+                </div>
+              </div>
+            </div>
+            <div class="home-body-w-exp">
+              <label class="b">Working experience</label>
+              <div formArrayName="workingExperiences">
+                <div
+                  *ngFor="
+                    let workExp of workingExperiences.controls;
+                    index as idx
+                  "
+                  class="form-group"
+                >
+                  <app-working-experience
+                    [index]="idx"
+                    [workExp]="workExp"
+                    (onClickAddWE)="onClickAddWE($event)"
+                    (onClickRemoveWE)="onClickRemoveWE($event)"
+                  ></app-working-experience>
                 </div>
               </div>
             </div>

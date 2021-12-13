@@ -18,6 +18,19 @@ export class HomeComponent implements OnInit {
     competence: new FormControl(''),
     level: new FormControl(''),
   });
+  workingEpx = new FormGroup({
+    fromDate: new FormControl(''),
+    toDate: new FormControl(''),
+    companyName: new FormControl(''),
+    jobTitle: new FormControl(''),
+    jobDescription: new FormControl(''),
+  });
+  edu = new FormGroup({
+    fromDate: new FormControl(''),
+    toDate: new FormControl(''),
+    name: new FormControl(''),
+    major: new FormControl(''),
+  });
   angForm;
   constructor(private fb: FormBuilder) {
     this.angForm = this.fb.group({
@@ -35,6 +48,8 @@ export class HomeComponent implements OnInit {
       // ARRAY INFO
       programmingLanguages: this.fb.array([this.proLanguage]),
       otherSkills: this.fb.array(['']),
+      workingExperiences: this.fb.array([this.workingEpx]),
+      educations: this.fb.array([this.edu]),
     });
   }
   ngOnInit(): void {}
@@ -45,6 +60,12 @@ export class HomeComponent implements OnInit {
   get otherSkills() {
     return this.angForm.get('otherSkills') as FormArray;
   }
+  get workingExperiences() {
+    return this.angForm.get('workingExperiences') as FormArray;
+  }
+  get educations() {
+    return this.angForm.get('educations') as FormArray;
+  }
 
   onFormSubmit(): void {
     console.log({ res: this.angForm.value });
@@ -52,7 +73,7 @@ export class HomeComponent implements OnInit {
   onClickAddPL(index: number = 0): void {
     const values = this.programmingLanguages.at(index)?.value || {};
     if (!values?.technicalSkillset || !values?.competence || !values?.level) {
-      console.log('Empty some fields: ', { values });
+      console.log({ values });
       return;
     }
     this.programmingLanguages.insert(
@@ -69,7 +90,6 @@ export class HomeComponent implements OnInit {
       this.programmingLanguages.at(index).reset();
       return;
     }
-    console.log({ index });
     this.programmingLanguages.removeAt(index);
   }
   onClickAddOS(index: number = 0): void {
@@ -84,7 +104,53 @@ export class HomeComponent implements OnInit {
       this.otherSkills.at(index).reset();
       return;
     }
-    console.log({ index });
     this.otherSkills.removeAt(index);
+  }
+  onClickAddWE(index: number = 0): void {
+    const values = this.workingExperiences.at(index)?.value || {};
+    if (Object.values(values)?.includes('')) {
+      console.log({ values });
+      return;
+    }
+    this.workingExperiences.insert(
+      index + 1,
+      new FormGroup({
+        fromDate: new FormControl(''),
+        toDate: new FormControl(''),
+        companyName: new FormControl(''),
+        jobTitle: new FormControl(''),
+        jobDescription: new FormControl(''),
+      })
+    );
+  }
+  onClickRemoveWE(index: number = 0): void {
+    if (index == 0) {
+      this.workingExperiences.at(index).reset();
+      return;
+    }
+    this.workingExperiences.removeAt(index);
+  }
+  onClickAddEdu(index: number = 0): void {
+    const values = this.educations.at(index)?.value || {};
+    if (Object.values(values)?.includes('')) {
+      console.log({ values });
+      return;
+    }
+    this.educations.insert(
+      index + 1,
+      new FormGroup({
+        fromDate: new FormControl(''),
+        toDate: new FormControl(''),
+        name: new FormControl(''),
+        major: new FormControl(''),
+      })
+    );
+  }
+  onClickRemoveEdu(index: number = 0): void {
+    if (index == 0) {
+      this.educations.at(index).reset();
+      return;
+    }
+    this.educations.removeAt(index);
   }
 }

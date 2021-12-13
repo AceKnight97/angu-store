@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng g c components/ui/workingExperience --skip-tests"
+    "test": "ng g c components/ui/certificate --skip-tests"
   },
   "private": true,
   "dependencies": {
