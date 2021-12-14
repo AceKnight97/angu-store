@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DigitalcvComponent } from './services/gets/digitalcv/digitalcv.component';
+import { DigitalcvComponent } from './services/digitalcv/digitalcv.component';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,8 @@ import { DigitalcvComponent } from './services/gets/digitalcv/digitalcv.componen
 export class AppComponent {
   title = 'angu-store';
   constructor(private digitalcvSv: DigitalcvComponent) {
-    this.digitalcvSv.getData().subscribe((a) => {
-      console.log({ a });
-    });
+    // this.digitalcvSv.getCVs().subscribe((a) => {
+    //   console.log({ a });
+    // });
   }
 }

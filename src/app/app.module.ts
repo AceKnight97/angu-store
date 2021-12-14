@@ -10,7 +10,6 @@ import { InputCTComponent } from './components/inputs/input-ct/input-ct.componen
 import { InputTitleComponent } from './components/inputs/input-title/input-title.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { UserComponent } from './services/gets/user/user.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProgrammingLanguageComponent } from './components/ui/programming-language/programming-language.component';
@@ -29,7 +28,6 @@ import { ReferenceComponent } from './components/ui/reference/reference.componen
     FoodTableComponent,
     InputCTComponent,
     InputTitleComponent,
-    UserComponent,
     ProgrammingLanguageComponent,
     OtherSkillsComponent,
     WorkingExperienceComponent,

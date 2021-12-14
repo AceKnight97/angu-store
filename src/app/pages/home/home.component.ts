@@ -6,6 +6,7 @@ import {
   FormArray,
   FormBuilder,
 } from '@angular/forms';
+import { DigitalcvComponent } from 'src/app/services/digitalcv/digitalcv.component';
 
 @Component({
   selector: 'app-pages-home',
@@ -14,57 +15,64 @@ import {
 })
 export class HomeComponent implements OnInit {
   proLanguage = new FormGroup({
-    technicalSkillset: new FormControl(''),
-    competence: new FormControl(''),
-    level: new FormControl(''),
+    technicalSkillset: new FormControl('triet test 1'),
+    competence: new FormControl('triet test 1'),
+    level: new FormControl('Learner'),
   });
   workingEpx = new FormGroup({
-    fromDate: new FormControl(''),
-    toDate: new FormControl(''),
-    companyName: new FormControl(''),
-    jobTitle: new FormControl(''),
-    jobDescription: new FormControl(''),
+    fromDate: new FormControl(undefined),
+    toDate: new FormControl(undefined),
+    companyName: new FormControl('triet test 1'),
+    jobTitle: new FormControl('triet test 1'),
+    jobDescription: new FormControl('triet test 1'),
   });
   edu = new FormGroup({
-    fromDate: new FormControl(''),
-    toDate: new FormControl(''),
-    name: new FormControl(''),
-    major: new FormControl(''),
+    fromDate: new FormControl(undefined),
+    toDate: new FormControl(undefined),
+    name: new FormControl('triet test 1'),
+    major: new FormControl('triet test 1'),
   });
   certi = new FormGroup({
-    date: new FormControl(''),
-    certiName: new FormControl(''),
-    organizationName: new FormControl(''),
+    date: new FormControl(undefined),
+    certificateName: new FormControl('triet test 1'),
+    organizationName: new FormControl('triet test 1'),
   });
   project = new FormGroup({
-    name: new FormControl(''),
-    languages: new FormControl(''),
-    description: new FormControl(''),
+    name: new FormControl('triet test 1'),
+    languages: new FormControl('triet test 1'),
+    description: new FormControl('triet test 1'),
   });
   refer = new FormGroup({
-    referName: new FormControl(''),
-    companyName: new FormControl(''),
-    email: new FormControl(''),
-    phone: new FormControl(''),
+    referenceName: new FormControl('triet test 1'),
+    companyName: new FormControl('triet test 1'),
+    email: new FormControl('tttriet1997@gmail.com'),
+    phone: new FormControl('triet test 1'),
   });
   angForm;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private digitalcvSv: DigitalcvComponent
+  ) {
     this.angForm = this.fb.group({
       photo: 'test_photo_link',
-      username: 'Truong Thanh Triet',
       jobTitle: 'Front-end developer',
       // PERSONAL INFO
-      email: '',
-      phone: '',
-      address: '',
-      gender: '',
-      dob: '',
-      linkedin: '',
-      careerObjective: '',
-      hobby: '',
+      personalInfo: this.fb.group({
+        email: 'tttriet199@gmail.com',
+        phone: 'triet test 1',
+        address: 'triet test 1',
+        gender: 'Male',
+        dob: undefined,
+        linkedin: 'triet test 1',
+        careerObjective: 'triet test 1',
+        username: 'Truong Thanh Triet',
+      }),
+      hobby: 'triet test 1',
+      cvType: 'cv_type_1',
+      isActive: true,
       // ARRAY INFO
       programmingLanguages: this.fb.array([this.proLanguage]),
-      otherSkills: this.fb.array(['']),
+      otherSkills: this.fb.array(['triet test 1']),
       workingExperiences: this.fb.array([this.workingEpx]),
       educations: this.fb.array([this.edu]),
       certificates: this.fb.array([this.certi]),
@@ -97,7 +105,16 @@ export class HomeComponent implements OnInit {
   }
 
   onFormSubmit(): void {
-    console.log({ res: this.angForm.value });
+    const sendingData = JSON.parse(JSON.stringify(this.angForm.value));
+    const otherSkills = sendingData?.otherSkills.map((skill: string) => ({
+      skill,
+    }));
+    Object.assign(sendingData, { otherSkills });
+    console.log({ sendingData });
+
+    // this.digitalcvSv.createCV(sendingData).subscribe((a) => {
+    //   console.log({ a });
+    // });
   }
   // PROGRAMMING LANGUAGES
   onClickAddPL(index: number = 0): void {
@@ -147,8 +164,8 @@ export class HomeComponent implements OnInit {
     this.workingExperiences.insert(
       index + 1,
       new FormGroup({
-        fromDate: new FormControl(''),
-        toDate: new FormControl(''),
+        fromDate: new FormControl(undefined),
+        toDate: new FormControl(undefined),
         companyName: new FormControl(''),
         jobTitle: new FormControl(''),
         jobDescription: new FormControl(''),
@@ -172,8 +189,8 @@ export class HomeComponent implements OnInit {
     this.educations.insert(
       index + 1,
       new FormGroup({
-        fromDate: new FormControl(''),
-        toDate: new FormControl(''),
+        fromDate: new FormControl(undefined),
+        toDate: new FormControl(undefined),
         name: new FormControl(''),
         major: new FormControl(''),
       })
@@ -196,8 +213,8 @@ export class HomeComponent implements OnInit {
     this.certificates.insert(
       index + 1,
       new FormGroup({
-        date: new FormControl(''),
-        certiName: new FormControl(''),
+        date: new FormControl(undefined),
+        certificateName: new FormControl(''),
         organizationName: new FormControl(''),
       })
     );
@@ -242,7 +259,7 @@ export class HomeComponent implements OnInit {
     this.references.insert(
       index + 1,
       new FormGroup({
-        referName: new FormControl(''),
+        referenceName: new FormControl(''),
         companyName: new FormControl(''),
         email: new FormControl(''),
         phone: new FormControl(''),

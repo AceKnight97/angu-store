@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class CertificateComponent implements OnInit {
   @Input() certi: any = new FormGroup({
     date: new FormControl(''),
-    certiName: new FormControl(''),
+    certificateName: new FormControl(''),
     organizationName: new FormControl(''),
   });
   @Input() index: number = 0;

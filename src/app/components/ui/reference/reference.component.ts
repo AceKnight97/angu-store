@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ReferenceComponent implements OnInit {
   @Input() refer: any = new FormGroup({
-    referName: new FormControl(''),
+    referenceName: new FormControl(''),
     companyName: new FormControl(''),
     email: new FormControl(''),
     phone: new FormControl(''),
