@@ -99,6 +99,7 @@ export class HomeComponent implements OnInit {
   onFormSubmit(): void {
     console.log({ res: this.angForm.value });
   }
+  // PROGRAMMING LANGUAGES
   onClickAddPL(index: number = 0): void {
     const values = this.programmingLanguages.at(index)?.value || {};
     if (!values?.technicalSkillset || !values?.competence || !values?.level) {
@@ -121,6 +122,7 @@ export class HomeComponent implements OnInit {
     }
     this.programmingLanguages.removeAt(index);
   }
+  // OTHER SKILLS
   onClickAddOS(index: number = 0): void {
     if (!this.otherSkills.at(index)?.value) {
       console.log('Empty: ', { value: this.otherSkills.at(index)?.value });
@@ -135,6 +137,7 @@ export class HomeComponent implements OnInit {
     }
     this.otherSkills.removeAt(index);
   }
+  // WORKING EXPERIENCE
   onClickAddWE(index: number = 0): void {
     const values = this.workingExperiences.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
@@ -159,6 +162,7 @@ export class HomeComponent implements OnInit {
     }
     this.workingExperiences.removeAt(index);
   }
+  // EDUCATION
   onClickAddEdu(index: number = 0): void {
     const values = this.educations.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
@@ -182,6 +186,7 @@ export class HomeComponent implements OnInit {
     }
     this.educations.removeAt(index);
   }
+  // CERTIFICATE
   onClickAddCerti(index: number = 0): void {
     const values = this.certificates.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
@@ -204,6 +209,7 @@ export class HomeComponent implements OnInit {
     }
     this.certificates.removeAt(index);
   }
+  // PROJECT
   onClickAddPro(index: number = 0): void {
     const values = this.projects.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
@@ -226,6 +232,7 @@ export class HomeComponent implements OnInit {
     }
     this.projects.removeAt(index);
   }
+  // REFERENCE
   onClickAddRefer(index: number = 0): void {
     const values = this.references.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
