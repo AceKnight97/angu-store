@@ -20,6 +20,7 @@ import { WorkingExperienceComponent } from './components/ui/working-experience/w
 import { EducationComponent } from './components/ui/education/education.component';
 import { CertificateComponent } from './components/ui/certificate/certificate.component';
 import { ProjectComponent } from './components/ui/project/project.component';
+import { ReferenceComponent } from './components/ui/reference/reference.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProjectComponent } from './components/ui/project/project.component';
     EducationComponent,
     CertificateComponent,
     ProjectComponent,
+    ReferenceComponent,
   ],
   imports: [
     BrowserModule,

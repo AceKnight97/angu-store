@@ -182,6 +182,22 @@
                 </div>
               </div>
             </div>
+            <div class="home-body-refer">
+              <label class="b">Reference</label>
+              <div formArrayName="references">
+                <div
+                  *ngFor="let refer of references.controls; index as idx"
+                  class="form-group"
+                >
+                  <app-reference
+                    [index]="idx"
+                    [refer]="refer"
+                    (onClickAddRefer)="onClickAddRefer($event)"
+                    (onClickRemoveRefer)="onClickRemoveRefer($event)"
+                  ></app-reference>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
