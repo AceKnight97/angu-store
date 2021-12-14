@@ -10,7 +10,6 @@ import { InputCTComponent } from './components/inputs/input-ct/input-ct.componen
 import { InputTitleComponent } from './components/inputs/input-title/input-title.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TestComponent } from './services/gets/test/test.component';
 import { UserComponent } from './services/gets/user/user.component';
 
 import { ReactiveFormsModule } from '@angular/forms';

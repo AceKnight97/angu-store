@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng g c pages/login --skip-tests"
+    "test": "ng g c services/get/digitalcv --skip-tests"
   },
   "private": true,
   "dependencies": {
