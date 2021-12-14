@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
       educations: this.fb.array([this.edu]),
       certificates: this.fb.array([this.certi]),
       projects: this.fb.array([this.project]),
-      references: this.fb.array([this.refer]),
+      referencecvs: this.fb.array([this.refer]),
     });
   }
   ngOnInit(): void {}
@@ -100,8 +100,8 @@ export class HomeComponent implements OnInit {
   get projects() {
     return this.angForm.get('projects') as FormArray;
   }
-  get references() {
-    return this.angForm.get('references') as FormArray;
+  get referencecvs() {
+    return this.angForm.get('referencecvs') as FormArray;
   }
 
   onFormSubmit(): void {
@@ -251,12 +251,12 @@ export class HomeComponent implements OnInit {
   }
   // REFERENCE
   onClickAddRefer(index: number = 0): void {
-    const values = this.references.at(index)?.value || {};
+    const values = this.referencecvs.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
       console.log({ values });
       return;
     }
-    this.references.insert(
+    this.referencecvs.insert(
       index + 1,
       new FormGroup({
         referenceName: new FormControl(''),
@@ -268,9 +268,9 @@ export class HomeComponent implements OnInit {
   }
   onClickRemoveRefer(index: number = 0): void {
     if (index == 0) {
-      this.references.at(index).reset();
+      this.referencecvs.at(index).reset();
       return;
     }
-    this.references.removeAt(index);
+    this.referencecvs.removeAt(index);
   }
 }
