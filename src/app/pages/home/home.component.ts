@@ -31,6 +31,16 @@ export class HomeComponent implements OnInit {
     name: new FormControl(''),
     major: new FormControl(''),
   });
+  certi = new FormGroup({
+    date: new FormControl(''),
+    certiName: new FormControl(''),
+    organizationName: new FormControl(''),
+  });
+  project = new FormGroup({
+    name: new FormControl(''),
+    languages: new FormControl(''),
+    description: new FormControl(''),
+  });
   angForm;
   constructor(private fb: FormBuilder) {
     this.angForm = this.fb.group({
@@ -45,11 +55,14 @@ export class HomeComponent implements OnInit {
       dob: '',
       linkedin: '',
       careerObjective: '',
+      hobby: '',
       // ARRAY INFO
       programmingLanguages: this.fb.array([this.proLanguage]),
       otherSkills: this.fb.array(['']),
       workingExperiences: this.fb.array([this.workingEpx]),
       educations: this.fb.array([this.edu]),
+      certificates: this.fb.array([this.certi]),
+      projects: this.fb.array([this.project]),
     });
   }
   ngOnInit(): void {}
@@ -65,6 +78,12 @@ export class HomeComponent implements OnInit {
   }
   get educations() {
     return this.angForm.get('educations') as FormArray;
+  }
+  get certificates() {
+    return this.angForm.get('certificates') as FormArray;
+  }
+  get projects() {
+    return this.angForm.get('projects') as FormArray;
   }
 
   onFormSubmit(): void {
@@ -152,5 +171,49 @@ export class HomeComponent implements OnInit {
       return;
     }
     this.educations.removeAt(index);
+  }
+  onClickAddCerti(index: number = 0): void {
+    const values = this.certificates.at(index)?.value || {};
+    if (Object.values(values)?.includes('')) {
+      console.log({ values });
+      return;
+    }
+    this.certificates.insert(
+      index + 1,
+      new FormGroup({
+        date: new FormControl(''),
+        certiName: new FormControl(''),
+        organizationName: new FormControl(''),
+      })
+    );
+  }
+  onClickRemoveCerti(index: number = 0): void {
+    if (index == 0) {
+      this.certificates.at(index).reset();
+      return;
+    }
+    this.certificates.removeAt(index);
+  }
+  onClickAddPro(index: number = 0): void {
+    const values = this.projects.at(index)?.value || {};
+    if (Object.values(values)?.includes('')) {
+      console.log({ values });
+      return;
+    }
+    this.projects.insert(
+      index + 1,
+      new FormGroup({
+        name: new FormControl(''),
+        languages: new FormControl(''),
+        description: new FormControl(''),
+      })
+    );
+  }
+  onClickRemovePro(index: number = 0): void {
+    if (index == 0) {
+      this.projects.at(index).reset();
+      return;
+    }
+    this.projects.removeAt(index);
   }
 }

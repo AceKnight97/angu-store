@@ -19,6 +19,7 @@ import { OtherSkillsComponent } from './components/ui/other-skills/other-skills.
 import { WorkingExperienceComponent } from './components/ui/working-experience/working-experience.component';
 import { EducationComponent } from './components/ui/education/education.component';
 import { CertificateComponent } from './components/ui/certificate/certificate.component';
+import { ProjectComponent } from './components/ui/project/project.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CertificateComponent } from './components/ui/certificate/certificate.co
     WorkingExperienceComponent,
     EducationComponent,
     CertificateComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,

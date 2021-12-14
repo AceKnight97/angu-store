@@ -1,1 +1,22 @@
-<p>certificate works!</p>
+<form [formGroup]="certi" (ngSubmit)="onFormSubmit()" class="certificate">
+  <div class="form-group">
+    <label>Certificate date</label>
+    <input formControlName="date" />
+  </div>
+  <div class="form-group">
+    <label>Cert. name</label>
+    <input formControlName="certiName" />
+  </div>
+  <div class="form-group">
+    <label>Organization name</label>
+    <input formControlName="organizationName" />
+  </div>
+  <div class="certificate-btns">
+    <button class="nor-btn certificate-btns-add" (click)="onClickAdd()">
+      +
+    </button>
+    <button class="nor-btn certificate-btns-delete" (click)="onClickRemove()">
+      X
+    </button>
+  </div>
+</form>

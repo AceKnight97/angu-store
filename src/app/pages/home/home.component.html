@@ -87,7 +87,30 @@
                 </div>
               </div>
             </div>
+            <div class="home-body-certi">
+              <label class="b">Certificate</label>
+              <div formArrayName="certificates">
+                <div
+                  *ngFor="let certi of certificates.controls; index as idx"
+                  class="form-group"
+                >
+                  <app-certificate
+                    [index]="idx"
+                    [certi]="certi"
+                    (onClickAddCerti)="onClickAddCerti($event)"
+                    (onClickRemoveCerti)="onClickRemoveCerti($event)"
+                  ></app-certificate>
+                </div>
+              </div>
+            </div>
+            <div class="home-body-hobby">
+              <label class="b">Hobby</label>
+              <div class="form-group">
+                <input formControlName="hobby" />
+              </div>
+            </div>
           </div>
+
           <div class="home-body-right">
             <div class="home-body-pl">
               <label class="b">Personal Info</label>
@@ -108,23 +131,7 @@
                 </div>
               </div>
             </div>
-            <div class="home-body-pl">
-              <label class="b">Other skill</label>
-              <div formArrayName="otherSkills">
-                <div
-                  *ngFor="let otherSkill of otherSkills.controls; index as idx"
-                  class="form-group"
-                >
-                  <app-other-skills
-                    [index]="idx"
-                    [otherSkill]="otherSkill"
-                    (onClickAddOS)="onClickAddOS($event)"
-                    (onClickRemoveOS)="onClickRemoveOS($event)"
-                  ></app-other-skills>
-                </div>
-              </div>
-            </div>
-            <div class="home-body-pl">
+            <div class="home-body-os">
               <label class="b">Other skill</label>
               <div formArrayName="otherSkills">
                 <div
@@ -156,6 +163,22 @@
                     (onClickAddWE)="onClickAddWE($event)"
                     (onClickRemoveWE)="onClickRemoveWE($event)"
                   ></app-working-experience>
+                </div>
+              </div>
+            </div>
+            <div class="home-body-project">
+              <label class="b">Project</label>
+              <div formArrayName="projects">
+                <div
+                  *ngFor="let project of projects.controls; index as idx"
+                  class="form-group"
+                >
+                  <app-project
+                    [index]="idx"
+                    [project]="project"
+                    (onClickAddPro)="onClickAddPro($event)"
+                    (onClickRemovePro)="onClickRemovePro($event)"
+                  ></app-project>
                 </div>
               </div>
             </div>

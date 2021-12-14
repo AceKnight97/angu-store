@@ -1,0 +1,21 @@
+<form [formGroup]="project" (ngSubmit)="onFormSubmit()" class="project">
+  <div class="form-group">
+    <label>Project name</label>
+    <input formControlName="name" />
+  </div>
+  <div class="form-group">
+    <label>Languages</label>
+    <input formControlName="languages" />
+  </div>
+  <div class="form-group">
+    <label>Project description</label>
+    <input formControlName="description" />
+  </div>
+
+  <div class="project-btns">
+    <button class="nor-btn project-btns-add" (click)="onClickAdd()">+</button>
+    <button class="nor-btn project-btns-delete" (click)="onClickRemove()">
+      X
+    </button>
+  </div>
+</form>
