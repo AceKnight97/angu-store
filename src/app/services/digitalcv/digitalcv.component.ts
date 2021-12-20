@@ -14,6 +14,12 @@ export class DigitalcvComponent {
     let url = `${this.host}/digitalcv`;
     return this.http.get(url);
   }
+
+  getMasterData() {
+    let url = `${this.host}/masterdata`;
+    return this.http.get(url);
+  }
+
   // POSTS
   createCV(data: any) {
     let url = `${this.host}/digitalcv/createcv`;

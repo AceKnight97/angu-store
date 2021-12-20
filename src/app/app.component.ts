@@ -9,8 +9,11 @@ import { DigitalcvComponent } from './services/digitalcv/digitalcv.component';
 export class AppComponent {
   title = 'angu-store';
   constructor(private digitalcvSv: DigitalcvComponent) {
-    // this.digitalcvSv.getCVs().subscribe((a) => {
-    //   console.log({ a });
+    // this.digitalcvSv.getCVs().subscribe((cvs) => {
+    //   console.log({ cvs });
     // });
+    this.digitalcvSv.getMasterData().subscribe((masterdata) => {
+      console.log({ masterdata });
+    });
   }
 }
