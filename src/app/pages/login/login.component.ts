@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import masterData, {
   SkillObj,
   filterMasterData1,
@@ -20,47 +20,19 @@ export class LoginComponent implements OnInit {
   imageName: any;
   // masterData: string = JSON.stringify(masterData);
   masterData: SkillObj[] = masterData;
+  testSelect = new FormControl();
+  selectList: string[] = ['a', 'b', 'c'];
+
   constructor(private httpClient: HttpClient) {
     // const raw = filterMasterData1(this.masterData);
     // const temp = raw.filter((x) => x?.competence);
   }
 
-  public onFileChanged(event: any) {
-    this.selectedFile = event.target.files[0];
-    console.log({ selectedFile: this.selectedFile });
-    const uploadImageData = new FormData();
-    uploadImageData.append('imageFile', this.selectedFile, 'TestImg');
-    console.log({ uploadImageData });
-  }
+  public onFileChanged(event: any) {}
 
-  onUpload() {
-    const uploadImageData = new FormData();
-    uploadImageData.append('imageFile', this.selectedFile, 'TestImg');
-    console.log({ uploadImageData });
-    this.httpClient
-      .post('http://localhost:8080/image/upload', uploadImageData, {
-        observe: 'response',
-      })
-      .subscribe((response) => {
-        if (response.status === 200) {
-          this.message = 'Image uploaded successfully';
-        } else {
-          this.message = 'Image not uploaded successfully';
-        }
-      });
-  }
+  onUpload() {}
 
-  //Gets called when the user clicks on retieve image button to get the image from back end
-  getImage() {
-    //Make a call to Sprinf Boot to get the Image Bytes.
-    this.httpClient
-      .get('http://localhost:8080/image/get/' + this.imageName)
-      .subscribe((res) => {
-        this.retrieveResonse = res;
-        this.base64Data = this.retrieveResonse.picByte;
-        this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-      });
-  }
+  getImage() {}
 
   ngOnInit(): void {}
 }

@@ -13,6 +13,8 @@ export class ProgrammingLanguageComponent implements OnInit {
     level: new FormControl(''),
   });
   @Input() index: number = 0;
+  @Input() skillsets: string[] = [];
+  @Input() languages: string[] = [];
   @Output() onClickAddPL = new EventEmitter<any>();
   @Output() onClickRemovePL = new EventEmitter<any>();
 

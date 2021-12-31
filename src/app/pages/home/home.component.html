@@ -113,7 +113,7 @@
 
           <div class="home-body-right">
             <div class="home-body-pl">
-              <label class="b">Personal Info</label>
+              <label class="b">Programming languages</label>
               <div formArrayName="programmingLanguages">
                 <div
                   *ngFor="
@@ -127,6 +127,8 @@
                     [programingLanguage]="proLanguage"
                     (onClickAddPL)="onClickAddPL($event)"
                     (onClickRemovePL)="onClickRemovePL($event)"
+                    [skillsets]="skillsets"
+                    [languages]="languages"
                   ></app-programming-language>
                 </div>
               </div>

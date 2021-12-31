@@ -19,6 +19,7 @@ import { EducationComponent } from './components/ui/education/education.componen
 import { CertificateComponent } from './components/ui/certificate/certificate.component';
 import { ProjectComponent } from './components/ui/project/project.component';
 import { ReferenceComponent } from './components/ui/reference/reference.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ReferenceComponent } from './components/ui/reference/reference.componen
     CertificateComponent,
     ProjectComponent,
     ReferenceComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

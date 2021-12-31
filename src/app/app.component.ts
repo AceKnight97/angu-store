@@ -12,8 +12,11 @@ export class AppComponent {
     // this.digitalcvSv.getCVs().subscribe((cvs) => {
     //   console.log({ cvs });
     // });
-    this.digitalcvSv.getMasterData().subscribe((masterdata) => {
-      console.log({ masterdata });
-    });
+    // this.digitalcvSv.getMasterData().subscribe((masterdata) => {
+    //   console.log({ masterdata });
+    // });
+    // this.digitalcvSv.getCVManagement().subscribe((managementData) => {
+    //   console.log({ managementData });
+    // });
   }
 }

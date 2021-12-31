@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatSelectModule,
   ],
 })
 export class AppRoutingModule {}

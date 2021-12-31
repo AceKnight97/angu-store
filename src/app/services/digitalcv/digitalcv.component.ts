@@ -7,11 +7,18 @@ import { CONFIG, httpOptions } from '../config';
 })
 export class DigitalcvComponent {
   host = CONFIG.HOST;
+  digitalcv = `${this.host}/digitalcv`;
   constructor(private http: HttpClient) {}
 
   // GETS
+  // digitalcv
   getCVs() {
-    let url = `${this.host}/digitalcv`;
+    let url = this.digitalcv;
+    return this.http.get(url);
+  }
+
+  getCVManagement() {
+    let url = `${this.digitalcv}/management/tttriet199@gmail.com`;
     return this.http.get(url);
   }
 
@@ -22,8 +29,7 @@ export class DigitalcvComponent {
 
   // POSTS
   createCV(data: any) {
-    let url = `${this.host}/digitalcv/createcv`;
-    // return this.http.post(url);
+    let url = `${this.digitalcv}/createcv`;
     return this.http.post(url, { data }, httpOptions);
   }
 }

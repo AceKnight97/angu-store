@@ -8,6 +8,15 @@ import {
 } from '@angular/forms';
 import { DigitalcvComponent } from 'src/app/services/digitalcv/digitalcv.component';
 
+interface MasterData {
+  SKILL_COMPETENCE?: any[];
+}
+
+interface SkillSet {
+  skillset?: string;
+  competence?: string;
+}
+
 @Component({
   selector: 'app-pages-home',
   templateUrl: './home.component.html',
@@ -15,8 +24,8 @@ import { DigitalcvComponent } from 'src/app/services/digitalcv/digitalcv.compone
 })
 export class HomeComponent implements OnInit {
   proLanguage = new FormGroup({
-    technicalSkillset: new FormControl('triet test 1'),
-    competence: new FormControl('triet test 1'),
+    technicalSkillset: new FormControl(''),
+    competence: new FormControl(''),
     level: new FormControl('Learner'),
   });
   workingEpx = new FormGroup({
@@ -49,12 +58,14 @@ export class HomeComponent implements OnInit {
     phone: new FormControl('triet test 1'),
   });
   angForm;
+  skillsets: string[] = [];
+  languages: string[] = [];
   constructor(
     private fb: FormBuilder,
     private digitalcvSv: DigitalcvComponent
   ) {
     this.angForm = this.fb.group({
-      photo: 'test_photo_link',
+      photo: 'data:image/jpeg;base64,test',
       jobTitle: 'Front-end developer',
       // PERSONAL INFO
       personalInfo: this.fb.group({
@@ -79,8 +90,20 @@ export class HomeComponent implements OnInit {
       projects: this.fb.array([this.project]),
       referencecvs: this.fb.array([this.refer]),
     });
+    this.digitalcvSv.getMasterData().subscribe((masterdata: MasterData) => {
+      console.log({ masterdata });
+      const arr = masterdata?.SKILL_COMPETENCE || [];
+      arr.forEach((item: any) => {
+        this.skillsets.push(item.skillet);
+        this.languages.push(item.competence);
+      });
+    });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.digitalcvSv.getCVs().subscribe((cvs) => {
+    //   console.log({ cvs });
+    // });
+  }
 
   get programmingLanguages() {
     return this.angForm.get('programmingLanguages') as FormArray;
@@ -112,9 +135,9 @@ export class HomeComponent implements OnInit {
     Object.assign(sendingData, { otherSkills });
     console.log({ sendingData });
 
-    // this.digitalcvSv.createCV(sendingData).subscribe((a) => {
-    //   console.log({ a });
-    // });
+    this.digitalcvSv.createCV(sendingData).subscribe((a) => {
+      console.log({ a });
+    });
   }
   // PROGRAMMING LANGUAGES
   onClickAddPL(index: number = 0): void {
