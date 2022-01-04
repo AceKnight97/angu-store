@@ -20,11 +20,15 @@ import { CertificateComponent } from './components/ui/certificate/certificate.co
 import { ProjectComponent } from './components/ui/project/project.component';
 import { ReferenceComponent } from './components/ui/reference/reference.component';
 import { LoginComponent } from './pages/login/login.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './reducers';
+import { TestComponent } from './pages/test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    TestComponent,
     LearningComponent,
     FoodTableComponent,
     InputCTComponent,
@@ -45,6 +49,7 @@ import { LoginComponent } from './pages/login/login.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [],
   bootstrap: [AppComponent],

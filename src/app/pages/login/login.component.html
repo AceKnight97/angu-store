@@ -1,24 +1,48 @@
+<style>
+  .post {
+    margin-top: 1rem;
+  }
+</style>
 <div class="login">
   <div class="login-header">
     <div class="login-header-title">Digital CV Login</div>
   </div>
   <div class="login-body">
     <div class="login-body-m">
-      <button type="button" routerLink="/home">Go to home</button>
-      <!-- <input type="color" />
-      <mat-form-field appearance="fill">
-        <mat-select [formControl]="testSelect">
-          <div *ngFor="let item of selectList">
-            <mat-option value="item">{{ item }}</mat-option>
+      <div class="row">
+        <div>
+          Digital CV
+          <button type="button" routerLink="/home">Go to home</button>
+        </div>
+        <div>
+          Redux text
+          {{ message$ | async }}
+          <button (click)="onChangeA()">ABC</button>
+          <button (click)="onChange123()">123</button>
+        </div>
+      </div>
+      <div class="row">
+        <div *ngIf="post$ | async as p">
+          Redux Object
+          <h2>{{ p.text }}</h2>
+          <h2>Vote: {{ p.likes }}</h2>
+          <button (click)="upVote()">UP</button>
+          <button (click)="downVote()">Down</button>
+          <button (click)="resetVote()">Reset</button>
+
+          <input [(ngModel)]="text" />
+          <button (click)="editText()">Edit</button>
+        </div>
+        <div>
+          <!-- //*ngIf="local | async" -->
+          <div>Local storage</div>
+          <div *ngIf="auth | async as l">
+            <div>{{ l.username }}</div>
+            <div>{{ l.email }}</div>
           </div>
-        </mat-select>
-      </mat-form-field> -->
-
-      <!-- (change)="onFileChanged($event)" -->
-
-      <!--  <button (click)="onUpload()"></button> -->
-
-      <!-- <div>{{ masterData }}</div> -->
+          <button (click)="setLocal()">Set local</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

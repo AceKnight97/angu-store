@@ -7,11 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginComponent } from './pages/login/login.component';
+import { TestComponent } from './pages/test/test.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'test', component: TestComponent },
   { path: 'home', component: HomeComponent },
-  { path: '**', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/test', pathMatch: 'full' },
 ];
 
 @NgModule({

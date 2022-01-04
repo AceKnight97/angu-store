@@ -30,6 +30,11 @@ export class DigitalcvComponent {
   // POSTS
   createCV(data: any) {
     let url = `${this.digitalcv}/createcv`;
-    return this.http.post(url, { data }, httpOptions);
+    return this.http.post(url, data, httpOptions);
+  }
+
+  login(email: string, password: string) {
+    let url = `${this.host}/management/tttriet199@gmail.com`;
+    return this.http.post(url, { email, password }, httpOptions);
   }
 }
