@@ -1,48 +1,66 @@
-<style>
-  .post {
-    margin-top: 1rem;
-  }
-</style>
 <div class="login">
   <div class="login-header">
     <div class="login-header-title">Digital CV Login</div>
   </div>
   <div class="login-body">
     <div class="login-body-m">
-      <div class="row">
-        <div>
-          Digital CV
-          <button type="button" routerLink="/home">Go to home</button>
-        </div>
-        <div>
-          Redux text
-          {{ message$ | async }}
-          <button (click)="onChangeA()">ABC</button>
-          <button (click)="onChange123()">123</button>
-        </div>
-      </div>
-      <div class="row">
-        <div *ngIf="post$ | async as p">
-          Redux Object
-          <h2>{{ p.text }}</h2>
-          <h2>Vote: {{ p.likes }}</h2>
-          <button (click)="upVote()">UP</button>
-          <button (click)="downVote()">Down</button>
-          <button (click)="resetVote()">Reset</button>
+      <div class="login-body-form">
+        <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+          <h2>Login form</h2>
+          <label>Email</label>
+          <input formControlName="email" />
+          <label>Password</label>
+          <input formControlName="password" type="password" />
 
-          <input [(ngModel)]="text" />
-          <button (click)="editText()">Edit</button>
-        </div>
-        <div>
-          <!-- //*ngIf="local | async" -->
-          <div>Local storage</div>
-          <div *ngIf="auth | async as l">
-            <div>{{ l.username }}</div>
-            <div>{{ l.email }}</div>
-          </div>
-          <button (click)="setLocal()">Set local</button>
-        </div>
+          <button
+            mat-raised-button
+            color="accent"
+            class="login-body-btn-login"
+            type="submit"
+          >
+            Login
+          </button>
+        </form>
       </div>
+      <div class="login-body-form">
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterFormSubmit()">
+          <h2>Register form</h2>
+          <label>Username</label>
+          <input formControlName="username" />
+          <label>Email</label>
+          <input formControlName="email" />
+          <label>Password</label>
+          <input formControlName="password" type="password" />
+          <label>Confirm password</label>
+          <input formControlName="confirmPassword" type="password" />
+
+          <button
+            mat-raised-button
+            color="accent"
+            class="login-body-btn-login"
+            type="submit"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="login-footer">
+    <div class="login-footer-email">tttriet1997@gmail.com</div>
+    <!-- <div class="divider-v "></div> -->
+    <div class="login-footer-divider"></div>
+    <a
+      class="login-footer-email"
+      target="_blank"
+      href="https://www.facebook.com/profile.php?id=100015087697713"
+      >Facebook</a
+    >
+    <div class="login-footer-divider"></div>
+    <div class="login-footer-email">(+84) 819 541 897</div>
+    <div class="login-footer-divider"></div>
+    <div class="login-footer-address">
+      329 Le Van Luong, W. Tan Quy, D.7, HCM city
     </div>
   </div>
 </div>

@@ -23,6 +23,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './reducers';
 import { TestComponent } from './pages/test/test.component';
+import { CreateCVComponent } from './pages/createcv/createcv.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { TestComponent } from './pages/test/test.component';
     ProjectComponent,
     ReferenceComponent,
     LoginComponent,
+    CreateCVComponent,
   ],
   imports: [
     BrowserModule,

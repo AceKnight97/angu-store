@@ -8,7 +8,7 @@ import { CONFIG, httpOptions } from 'src/app/services/config';
 @Injectable({
   providedIn: 'root',
 })
-export class HomeService {
+export class CreateCVService {
   constructor(private http: HttpClient) {}
 
   loadCVs(email: string): Observable<any> {
@@ -19,7 +19,7 @@ export class HomeService {
     return this.http.put(
       `${CONFIG.HOST}/digitalcv/deletecv/${id}`,
       { email },
-      httpOptions
+      httpOptions()
     );
   }
   getUserInfo(): Observable<any> {

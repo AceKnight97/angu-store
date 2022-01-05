@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CONFIG, httpOptions } from '../config';
+import LocalStorage from 'src/app/localStorage';
 
 @Injectable({
   providedIn: 'root',
@@ -28,13 +29,17 @@ export class DigitalcvComponent {
   }
 
   // POSTS
-  createCV(data: any) {
+  createCV(data: any, Authorization: string) {
     let url = `${this.digitalcv}/createcv`;
-    return this.http.post(url, data, httpOptions);
+    return this.http.post(url, data, httpOptions(Authorization));
   }
 
   login(email: string, password: string) {
-    let url = `${this.host}/management/tttriet199@gmail.com`;
-    return this.http.post(url, { email, password }, httpOptions);
+    let url = `${this.host}/api/public/login`;
+    return this.http.post(url, { email, password }, httpOptions());
+  }
+  register(username: string, email: string, password: string) {
+    let url = `${this.host}/api/public/register`;
+    return this.http.post(url, { username, email, password }, httpOptions());
   }
 }

@@ -1,14 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import LocalStorage from 'src/app/localStorage';
+import { MutationResponse } from 'src/app/models';
 import { AppState } from 'src/app/reducers';
 import { AuthInterface } from 'src/app/reducers/auth/auth';
-import { Post } from 'src/app/reducers/post/post';
 import { DigitalcvComponent } from 'src/app/services/digitalcv/digitalcv.component';
 import * as AuthActions from '../../reducers/auth/auth.action';
-import * as PostActions from '../../reducers/post/post.action';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,58 +16,60 @@ import * as PostActions from '../../reducers/post/post.action';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  message$!: Observable<string>;
-  post$: Observable<Post>;
-  text?: string;
   auth: Observable<AuthInterface> | undefined;
+  loginForm;
+  registerForm;
 
   constructor(
-    private httpClient: HttpClient,
+    private fb: FormBuilder,
     private digitalcvSv: DigitalcvComponent,
     private store: Store<AppState>,
-    private localStorage: LocalStorage
+    private localStorage: LocalStorage,
+    private _router: Router
   ) {
-    this.digitalcvSv.getCVManagement().subscribe((managementData) => {
-      console.log({ managementData });
-    });
-    this.message$ = this.store.select('message');
-    this.post$ = this.store.select('post');
     this.auth = this.store.select('auth');
+    this.loginForm = this.fb.group({
+      email: 'aceknight@gmail.com',
+      password: '123456',
+    });
+    this.registerForm = this.fb.group({
+      username: 'AceKnight97',
+      email: 'aceknight@gmail.com',
+      password: '123456',
+      confirmPassword: '123456',
+    });
   }
 
   public onFileChanged(event: any) {}
 
-  onUpload() {}
-
-  getImage() {}
-
   ngOnInit(): void {}
 
-  onChangeA() {
-    this.store.dispatch({ type: 'ABC' });
+  onFormSubmit() {
+    const loginForm = this.loginForm.value;
+    console.log({ loginForm });
+    this.digitalcvSv
+      .login(loginForm.email, loginForm.password)
+      .subscribe((login: MutationResponse) => {
+        console.log({ login });
+        if (login.isSuccess) {
+          this.localStorage.login({
+            ...login?.data?.user,
+            token: login?.data?.token,
+          });
+          this._router.navigate(['home']);
+        } else {
+          console.log('failed');
+        }
+      });
   }
-  onChange123() {
-    this.store.dispatch({ type: '123' });
-  }
-  editText() {
-    this.store.dispatch(new PostActions.EditText({ text: this.text }));
-  }
-  upVote() {
-    this.store.dispatch(new PostActions.Upvote());
-  }
-  downVote() {
-    this.store.dispatch(new PostActions.Downvote());
-  }
-  resetVote() {
-    this.store.dispatch(new PostActions.Reset());
-  }
-  setLocal() {
-    this.localStorage.login({ username: 'Ace', email: 'asdasd@sdasd.ciom' });
-    this.store.dispatch(
-      new AuthActions.UpdateAuth({
-        username: 'Ace',
-        email: 'asdasd@sdasd.ciom',
-      })
-    );
+
+  onRegisterFormSubmit() {
+    const val = this.registerForm.value;
+    console.log({ val });
+    this.digitalcvSv
+      .register(val.username, val.email, val.password)
+      .subscribe((register) => {
+        console.log({ register });
+      });
   }
 }
