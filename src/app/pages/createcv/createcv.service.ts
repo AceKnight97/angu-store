@@ -12,7 +12,7 @@ export class CreateCVService {
   constructor(private http: HttpClient) {}
 
   loadCVs(email: string): Observable<any> {
-    console.log({ email });
+    // console.log({ email });
     return this.http.get(`${CONFIG.HOST}/digitalcv/email/${email}`);
   }
   deteleCV(id: number, email: string): Observable<any> {

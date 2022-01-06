@@ -21,5 +21,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    overflow: auto;
+    .form-group {
+      width: 48%;
+    }
   }
 }

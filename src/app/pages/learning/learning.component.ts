@@ -20,7 +20,7 @@ export class LearningComponent implements OnInit {
   ngOnInit(): void {}
 
   onChange(key: string, value: string): void {
-    console.log({ key, value });
+    // console.log({ key, value });
     this.number1 = parseInt(value, 10);
   }
 

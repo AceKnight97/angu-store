@@ -7,7 +7,7 @@ import { AuthInterface } from '../reducers/auth/auth';
 class LocalStorage {
   login(data: AuthInterface) {
     localStorage.setItem('full', JSON.stringify(data));
-    console.log({ LocalStorage: data });
+    // console.log({ LocalStorage: data });
   }
 
   getData() {

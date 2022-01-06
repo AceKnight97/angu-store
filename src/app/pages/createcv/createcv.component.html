@@ -6,11 +6,7 @@
   </div>
   <div class="createcv-body">
     <div class="createcv-body-m">
-      <form
-        [formGroup]="angForm"
-        (ngSubmit)="onFormSubmit()"
-        class="createcv-body-form"
-      >
+      <form [formGroup]="angForm" class="createcv-body-form">
         <div class="createcv-body-header">
           <div class="createcv-body-header-photo">
             <button
@@ -75,7 +71,7 @@
               </div>
               <div class="form-group">
                 <label>Date of birth</label>
-                <input formControlName="dob" />
+                <input formControlName="dob" type="date" />
               </div>
               <div class="form-group">
                 <label>Address</label>
@@ -92,7 +88,7 @@
             </div>
 
             <div class="createcv-body-edu">
-              <label class="b">Working experience</label>
+              <label class="b">Education</label>
               <div formArrayName="educations">
                 <div
                   *ngFor="let edu of educations.controls; index as idx"
@@ -229,6 +225,7 @@
             color="accent"
             class="createcv-body-btns-save"
             type="submit"
+            (click)="onFormSubmit()"
           >
             Save
           </button>

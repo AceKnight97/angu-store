@@ -8,47 +8,39 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import LocalStorage from 'src/app/localStorage';
+import { MutationResponse } from 'src/app/models';
 import { DigitalcvComponent } from 'src/app/services/digitalcv/digitalcv.component';
+import {
+  certiForm,
+  eduForm,
+  projectForm,
+  proLanguageForm,
+  referForm,
+  workingEpxForm,
+  CREATE_CV_TYPES,
+} from './createcv.helper';
+
+const {
+  PROGRAMMING,
+  WORKING_EXP,
+  EDUTCATION,
+  CERTIFICATE,
+  PROJECT,
+  REFERENCE,
+} = CREATE_CV_TYPES;
+
 @Component({
   selector: 'app-pages-createcv',
   templateUrl: './createcv.component.html',
   styleUrls: ['./createcv.component.scss'],
 })
 export class CreateCVComponent implements OnInit {
-  proLanguage = new FormGroup({
-    technicalSkillset: new FormControl(''),
-    competence: new FormControl(''),
-    level: new FormControl('Learner'),
-  });
-  workingEpx = new FormGroup({
-    fromDate: new FormControl(undefined),
-    toDate: new FormControl(undefined),
-    companyName: new FormControl('triet test 1'),
-    jobTitle: new FormControl('triet test 1'),
-    jobDescription: new FormControl('triet test 1'),
-  });
-  edu = new FormGroup({
-    fromDate: new FormControl(undefined),
-    toDate: new FormControl(undefined),
-    name: new FormControl('triet test 1'),
-    major: new FormControl('triet test 1'),
-  });
-  certi = new FormGroup({
-    date: new FormControl(undefined),
-    certificateName: new FormControl('triet test 1'),
-    organizationName: new FormControl('triet test 1'),
-  });
-  project = new FormGroup({
-    name: new FormControl('triet test 1'),
-    languages: new FormControl('triet test 1'),
-    description: new FormControl('triet test 1'),
-  });
-  refer = new FormGroup({
-    referenceName: new FormControl('triet test 1'),
-    companyName: new FormControl('triet test 1'),
-    email: new FormControl('tttriet1997@gmail.com'),
-    phone: new FormControl('triet test 1'),
-  });
+  proLanguage = proLanguageForm;
+  workingEpx = workingEpxForm;
+  edu = eduForm;
+  certi = certiForm;
+  project = projectForm;
+  refer = referForm;
   angForm;
   avatarUrl: string = '';
   skillsets: string[] = [];
@@ -66,7 +58,7 @@ export class CreateCVComponent implements OnInit {
       jobTitle: 'Front-end developer',
       // PERSONAL INFO
       personalInfo: this.fb.group({
-        email: 'tttriet199@gmail.com',
+        email: this.localStorage.getData().email,
         phone: 'triet test 1',
         address: 'triet test 1',
         gender: 'Male',
@@ -136,12 +128,18 @@ export class CreateCVComponent implements OnInit {
       skill,
     }));
     Object.assign(sendingData, { otherSkills });
-    console.log({ sendingData });
+    // console.log({ sendingData });
 
     this.digitalcvSv
       .createCV(sendingData, this.localStorage.getData().token)
-      .subscribe((a) => {
-        console.log({ a });
+      .subscribe((createcv: MutationResponse) => {
+        if (createcv.isSuccess) {
+          alert('Create CV successsfully!');
+          this._router.navigate(['home']);
+        } else {
+          const mes = createcv.message || 'Failed to create CV!';
+          alert(mes);
+        }
       });
   }
 
@@ -149,11 +147,45 @@ export class CreateCVComponent implements OnInit {
     this._router.navigate(['home']);
   }
 
+  onClickAdd(index: number, type: string) {
+    let values;
+    switch (type) {
+      case PROGRAMMING:
+        values = this.programmingLanguages.at(index)?.value || {};
+        values.insert(
+          index + 1,
+          new FormGroup({
+            technicalSkillset: new FormControl(''),
+            competence: new FormControl(''),
+            level: new FormControl(''),
+          })
+        );
+        break;
+      case WORKING_EXP:
+        values = this.workingExperiences.at(index)?.value || {};
+        break;
+      case EDUTCATION:
+        values = this.educations.at(index)?.value || {};
+        break;
+      case CERTIFICATE:
+        values = this.certificates.at(index)?.value || {};
+        break;
+      case PROJECT:
+        values = this.projects.at(index)?.value || {};
+        break;
+      case REFERENCE:
+        values = this.referencecvs.at(index)?.value || {};
+        break;
+      default:
+        break;
+    }
+  }
+
   // PROGRAMMING LANGUAGES
   onClickAddPL(index: number = 0): void {
     const values = this.programmingLanguages.at(index)?.value || {};
     if (!values?.technicalSkillset || !values?.competence || !values?.level) {
-      console.log({ values });
+      // console.log({ values });
       return;
     }
     this.programmingLanguages.insert(
@@ -191,7 +223,7 @@ export class CreateCVComponent implements OnInit {
   onClickAddWE(index: number = 0): void {
     const values = this.workingExperiences.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
-      console.log({ values });
+      // console.log({ values });
       return;
     }
     this.workingExperiences.insert(
@@ -216,7 +248,7 @@ export class CreateCVComponent implements OnInit {
   onClickAddEdu(index: number = 0): void {
     const values = this.educations.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
-      console.log({ values });
+      // console.log({ values });
       return;
     }
     this.educations.insert(
@@ -240,7 +272,7 @@ export class CreateCVComponent implements OnInit {
   onClickAddCerti(index: number = 0): void {
     const values = this.certificates.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
-      console.log({ values });
+      // console.log({ values });
       return;
     }
     this.certificates.insert(
@@ -263,7 +295,7 @@ export class CreateCVComponent implements OnInit {
   onClickAddPro(index: number = 0): void {
     const values = this.projects.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
-      console.log({ values });
+      // console.log({ values });
       return;
     }
     this.projects.insert(
@@ -286,7 +318,7 @@ export class CreateCVComponent implements OnInit {
   onClickAddRefer(index: number = 0): void {
     const values = this.referencecvs.at(index)?.value || {};
     if (Object.values(values)?.includes('')) {
-      console.log({ values });
+      // console.log({ values });
       return;
     }
     this.referencecvs.insert(
@@ -306,6 +338,8 @@ export class CreateCVComponent implements OnInit {
     }
     this.referencecvs.removeAt(index);
   }
+
+  // PHOTO
   onUploadFile(event: any) {
     const file = event.target.files[0];
     const reader = new FileReader();
@@ -315,7 +349,7 @@ export class CreateCVComponent implements OnInit {
 
     reader.readAsDataURL(file);
     setTimeout(() => {
-      console.log({ file, res: this.angForm.controls['photo'].value });
+      // console.log({ file, res: this.angForm.controls['photo'].value });
     }, 200);
   }
   onClickChangePhoto() {

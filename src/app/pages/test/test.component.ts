@@ -38,7 +38,7 @@ export class TestComponent implements OnInit {
     private localStorage: LocalStorage
   ) {
     this.digitalcvSv.getCVManagement().subscribe((managementData) => {
-      console.log({ managementData });
+      // console.log({ managementData });
     });
     this.message$ = this.store.select('message');
     this.post$ = this.store.select('post');

@@ -38,6 +38,11 @@ export class LoginComponent implements OnInit {
       password: '123456',
       confirmPassword: '123456',
     });
+    this.auth.subscribe((saveData: AuthInterface) => {
+      if (saveData.isSuccess) {
+        this._router.navigate(['home']);
+      }
+    });
   }
 
   public onFileChanged(event: any) {}
@@ -46,30 +51,37 @@ export class LoginComponent implements OnInit {
 
   onFormSubmit() {
     const loginForm = this.loginForm.value;
-    console.log({ loginForm });
+    // console.log({ loginForm });
     this.digitalcvSv
       .login(loginForm.email, loginForm.password)
       .subscribe((login: MutationResponse) => {
-        console.log({ login });
+        // console.log({ login });
         if (login.isSuccess) {
-          this.localStorage.login({
+          const saveData = {
             ...login?.data?.user,
             token: login?.data?.token,
-          });
+            isSuccess: true,
+          };
+          this.localStorage.login(saveData);
+          this.store.dispatch(new AuthActions.UpdateAuth(saveData));
           this._router.navigate(['home']);
         } else {
-          console.log('failed');
+          alert('Incorrect username or password!');
         }
       });
   }
 
   onRegisterFormSubmit() {
     const val = this.registerForm.value;
-    console.log({ val });
+    // console.log({ val });
     this.digitalcvSv
       .register(val.username, val.email, val.password)
-      .subscribe((register) => {
-        console.log({ register });
+      .subscribe((register: MutationResponse) => {
+        if (register.isSuccess) {
+          alert('Congratulations! Sign up success.');
+        } else {
+          alert('Email already existed!');
+        }
       });
   }
 }

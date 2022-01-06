@@ -15,7 +15,7 @@ const newState = (state: Post, newData: Post) => {
 };
 
 export function PostReducer(state: Post = defaultState, action: Action) {
-  console.log({ action, state });
+  // console.log({ action, state });
   let likes;
   let text;
   switch (action.type) {

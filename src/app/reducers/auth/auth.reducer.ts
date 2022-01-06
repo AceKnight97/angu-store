@@ -5,7 +5,9 @@ import * as AuthActions from './auth.action';
 
 export type Action = AuthActions.All;
 
-const defaultState: AuthInterface = {};
+const defaultState: AuthInterface = {
+  isSuccess: false,
+};
 
 const newState = (state: AuthInterface, newData: AuthInterface) => {
   return Object.assign({}, state, newData);
@@ -15,7 +17,7 @@ export function AuthReducer(
   state: AuthInterface = defaultState,
   action: Action
 ) {
-  console.log({ action, state });
+  // console.log({ action, state });
   switch (action.type) {
     case AuthActions.GET_AUTH:
       return state;
