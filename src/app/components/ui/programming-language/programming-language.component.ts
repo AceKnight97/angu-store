@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Programming } from 'src/app/pages/createcv/createcv.helper';
 
 @Component({
   selector: 'app-programming-language',
@@ -17,11 +18,26 @@ export class ProgrammingLanguageComponent implements OnInit {
   @Input() languages: string[] = [];
   @Output() onClickAddPL = new EventEmitter<any>();
   @Output() onClickRemovePL = new EventEmitter<any>();
+  @Input() parentDisabled: boolean = false;
+  isDisabled: boolean = true;
 
   constructor() {}
-  ngOnChanges(): void {}
+  ngOnChanges(): void {
+    this.getFirstStatus(this.programingLanguage.value);
+  }
 
-  ngOnInit(): void {}
+  getFirstStatus(values: Programming) {
+    const { technicalSkillset, competence, level } = values || {};
+    this.isDisabled =
+      !(technicalSkillset && competence && level) || this.parentDisabled;
+  }
+
+  ngOnInit(): void {
+    this.programingLanguage.valueChanges.subscribe((values: any) => {
+      this.getFirstStatus(values);
+    });
+  }
+
   onFormSubmit(): void {}
   onClickAdd(): void {
     this.onClickAddPL.emit(this.index);

@@ -29,14 +29,18 @@
   </div>
 
   <div class="working-experience-btns">
-    <button class="nor-btn working-experience-btns-add" (click)="onClickAdd()">
+    <button
+      class="nor-btn working-experience-btns-add"
+      (click)="onClickAdd()"
+      [disabled]="isDisabled"
+    >
       +
     </button>
     <button
       class="nor-btn working-experience-btns-delete"
       (click)="onClickRemove()"
     >
-      X
+      x
     </button>
   </div>
 </form>

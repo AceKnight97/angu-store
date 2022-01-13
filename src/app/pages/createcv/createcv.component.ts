@@ -16,8 +16,14 @@ import {
   projectForm,
   proLanguageForm,
   referForm,
-  workingEpxForm,
+  workingExpForm,
   CREATE_CV_TYPES,
+  workingExperiencesCheck,
+  programmingLanguagesCheck,
+  educationsCheck,
+  certificatesCheck,
+  projectsCheck,
+  referencecvsCheck,
 } from './createcv.helper';
 
 const {
@@ -35,16 +41,26 @@ const {
   styleUrls: ['./createcv.component.scss'],
 })
 export class CreateCVComponent implements OnInit {
+  angForm;
+  //
   proLanguage = proLanguageForm;
-  workingEpx = workingEpxForm;
+  workingExp = workingExpForm;
   edu = eduForm;
   certi = certiForm;
   project = projectForm;
   refer = referForm;
-  angForm;
+  //
   avatarUrl: string = '';
   skillsets: string[] = [];
   languages: string[] = [];
+  //
+  proLanguageCheck: boolean = false;
+  workingExpCheck: boolean = false;
+  eduCheck: boolean = false;
+  certiCheck: boolean = false;
+  projectCheck: boolean = false;
+  referCheck: boolean = false;
+  otherSkillsCheck: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -72,8 +88,8 @@ export class CreateCVComponent implements OnInit {
       isActive: true,
       // ARRAY INFO
       programmingLanguages: this.fb.array([this.proLanguage]),
-      otherSkills: this.fb.array(['triet test 1']),
-      workingExperiences: this.fb.array([this.workingEpx]),
+      otherSkills: this.fb.array(['']),
+      workingExperiences: this.fb.array([this.workingExp]),
       educations: this.fb.array([this.edu]),
       certificates: this.fb.array([this.certi]),
       projects: this.fb.array([this.project]),
@@ -87,11 +103,33 @@ export class CreateCVComponent implements OnInit {
     //     this.languages.push(item.competence);
     //   });
     // });
+    this.getFirstStatus(this.angForm.value);
   }
+
+  getFirstStatus(values: any) {
+    const {
+      programmingLanguages,
+      otherSkills,
+      workingExperiences,
+      educations,
+      certificates,
+      projects,
+      referencecvs,
+    } = values || {};
+    this.proLanguageCheck = programmingLanguagesCheck(programmingLanguages);
+    this.workingExpCheck = workingExperiencesCheck(workingExperiences);
+    this.eduCheck = educationsCheck(educations);
+    this.certiCheck = certificatesCheck(certificates);
+    this.projectCheck = projectsCheck(projects);
+    this.referCheck = referencecvsCheck(referencecvs);
+    this.otherSkillsCheck = otherSkills.find((x: string) => x === '') === '';
+  }
+
   ngOnInit(): void {
-    // this.digitalcvSv.getCVs().subscribe((cvs) => {
-    //   console.log({ cvs });
-    // });
+    this.getFirstStatus(this.angForm.value);
+    this.angForm.valueChanges.subscribe((values: any) => {
+      this.getFirstStatus(values);
+    });
   }
 
   get programmingLanguages() {
@@ -183,11 +221,6 @@ export class CreateCVComponent implements OnInit {
 
   // PROGRAMMING LANGUAGES
   onClickAddPL(index: number = 0): void {
-    const values = this.programmingLanguages.at(index)?.value || {};
-    if (!values?.technicalSkillset || !values?.competence || !values?.level) {
-      // console.log({ values });
-      return;
-    }
     this.programmingLanguages.insert(
       index + 1,
       new FormGroup({

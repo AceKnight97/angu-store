@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { WorkingExp } from 'src/app/pages/createcv/createcv.helper';
 
 @Component({
   selector: 'app-working-experience',
@@ -17,11 +19,24 @@ export class WorkingExperienceComponent implements OnInit {
   @Input() index: number = 0;
   @Output() onClickAddWE = new EventEmitter<any>();
   @Output() onClickRemoveWE = new EventEmitter<any>();
-
+  @Input() parentDisabled: boolean = false;
+  isDisabled: boolean = true;
   constructor() {}
-  ngOnChanges(): void {}
-
-  ngOnInit(): void {}
+  ngOnChanges(): void {
+    this.getFirstStatus(this.workExp.value);
+  }
+  getFirstStatus(values: WorkingExp) {
+    const { fromDate, toDate, companyName, jobTitle, jobDescription } =
+      values || {};
+    this.isDisabled =
+      !(fromDate && toDate && companyName && jobTitle && jobDescription) ||
+      this.parentDisabled;
+  }
+  ngOnInit(): void {
+    this.workExp.valueChanges.subscribe((values: any) => {
+      this.getFirstStatus(values);
+    });
+  }
   onFormSubmit(): void {}
   onClickAdd(): void {
     this.onClickAddWE.emit(this.index);

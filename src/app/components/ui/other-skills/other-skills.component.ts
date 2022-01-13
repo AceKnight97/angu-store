@@ -11,10 +11,20 @@ export class OtherSkillsComponent implements OnInit {
   @Input() index: number = 0;
   @Output() onClickAddOS = new EventEmitter<any>();
   @Output() onClickRemoveOS = new EventEmitter<any>();
-
+  @Input() parentDisabled: boolean = false;
+  isDisabled: boolean = true;
   constructor() {}
-
-  ngOnInit(): void {}
+  ngOnChanges(): void {
+    this.getFirstStatus(this.otherSkill.value);
+  }
+  getFirstStatus(values: string) {
+    this.isDisabled = values === '' || this.parentDisabled;
+  }
+  ngOnInit(): void {
+    this.otherSkill.valueChanges.subscribe((values: any) => {
+      this.getFirstStatus(values);
+    });
+  }
   onClickAdd(): void {
     this.onClickAddOS.emit(this.index);
   }

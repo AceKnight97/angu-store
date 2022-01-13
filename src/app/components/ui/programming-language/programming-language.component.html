@@ -7,14 +7,14 @@
       </div>
       <div class="form-group programming-language-com">
         <label>Competence</label>
-        <!-- <input formControlName="competence" /> -->
-        <mat-form-field appearance="fill">
+        <input formControlName="competence" />
+        <!-- <mat-form-field appearance="fill">
           <mat-select formControlName="competence">
             <div *ngFor="let item of languages">
               <mat-option value="item">{{ item }}</mat-option>
             </div>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
       </div>
     </div>
 
@@ -27,6 +27,7 @@
       <button
         class="nor-btn programming-language-btns-add"
         (click)="onClickAdd()"
+        [disabled]="isDisabled"
       >
         +
       </button>

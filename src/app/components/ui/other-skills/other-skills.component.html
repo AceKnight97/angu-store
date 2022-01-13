@@ -5,7 +5,11 @@
     placeholder="Your skills"
   />
   <div class="other-skills-btns">
-    <button class="nor-btn other-skills-btns-add" (click)="onClickAdd()">
+    <button
+      class="nor-btn other-skills-btns-add"
+      (click)="onClickAdd()"
+      [disabled]="isDisabled"
+    >
       +
     </button>
     <button class="nor-btn other-skills-btns-delete" (click)="onClickRemove()">
